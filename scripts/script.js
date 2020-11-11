@@ -14,10 +14,9 @@ function onFormSubmit(){
 
 function readFormData(){
     var formData = {}
-    formData['fullName'] = document.getElementById('fullName').value;
-    formData['empCode'] = document.getElementById('empCode').value;
-    formData['salary'] = document.getElementById('salary').value;
-    formData['city'] = document.getElementById('city').value;
+    formData['task'] = document.getElementById('task').value;
+    formData['date'] = document.getElementById('date').value;
+
     return formData
 }
 
@@ -25,44 +24,32 @@ function insertNewRecord(data){
     var table = document.getElementById('employeeList').getElementsByTagName('tbody')[0]
     var newRow = table.insertRow()
     cell1 = newRow.insertCell(0)
-    cell1.innerHTML = data.fullName
+    cell1.innerHTML = data.task
 
     cell2 = newRow.insertCell(1)
-    cell2.innerHTML = data.empCode
+    cell2.innerHTML = data.date
 
-    cell3 = newRow.insertCell(2)
-    cell3.innerHTML = data.salary
-
-    cell4 = newRow.insertCell(3)
-    cell4.innerHTML = data.city
-
-    cell5 = newRow.insertCell(4)
-    cell5.innerHTML = `<a onclick="onEdit(this)">Edit</a>
-                       <a onclick="onDelete(this)">Delete</a>`
+    cell5 = newRow.insertCell(2)
+    cell5.innerHTML = `<a class="edit btn" onclick="onEdit(this)">Edit</a>
+                       <a class="delete btn" onclick="onDelete(this)">Delete</a>`
 }
 
 function resetForm(){
-    document.getElementById("fullName").value = ""
-    document.getElementById("empCode").value = ""
-    document.getElementById("salary").value = ""
-    document.getElementById("city").value = ""
+    document.getElementById("task").value = ""
+    document.getElementById("date").value = ""
     selectedRow = null
 
 }
 
 function onEdit(td){
     selectedRow = td.parentElement.parentElement
-    document.getElementById('fullName').value = selectedRow.cells[0].innerHTML
-    document.getElementById('empCode').value = selectedRow.cells[1].innerHTML
-    document.getElementById('salary').value = selectedRow.cells[2].innerHTML
-    document.getElementById('city').value = selectedRow.cells[3].innerHTML
+    document.getElementById('task').value = selectedRow.cells[0].innerHTML
+    document.getElementById('date').value = selectedRow.cells[1].innerHTML
 }
 
 function updateRecord(formData){
-    selectedRow.cells[0].innerHTML = formData.fullName
-    selectedRow.cells[1].innerHTML = formData.empCode
-    selectedRow.cells[2].innerHTML = formData.salary
-    selectedRow.cells[3].innerHTML = formData.city
+    selectedRow.cells[0].innerHTML = formData.task
+    selectedRow.cells[1].innerHTML = formData.date
 }
 
 function onDelete(td) {
@@ -75,7 +62,7 @@ function onDelete(td) {
 
 function validate(){
     isValid = true;
-    if (document.getElementById("fullName").value === ""){
+    if (document.getElementById("task").value === ""){
         isValid = false
         document.getElementById("fullNameValidationError").classList.remove("hide")
     }else{
