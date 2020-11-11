@@ -17,7 +17,7 @@
                     <td>
                         <form onsubmit="event.preventDefault(); onFormSubmit()" autocomplete="off">
                             <div>
-                                <label>Task to do *</label><label class="validation-error hide" id="fullNameValidationError">This field is required</label>
+                                <label>Task to do *</label><label class="validation-error hide" id="taskValidationError">This field is required</label>
                                 <input type="text" name="task" id="task" />
                             </div>
                             <div>
@@ -31,7 +31,7 @@
                     </td>
                 </tr>
             </table>
-            <table class="list" id="employeeList">
+            <table class="list" id="taskList">
                 <thead>
                     <tr>
                         <th>Task to do</th>

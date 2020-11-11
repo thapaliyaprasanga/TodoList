@@ -21,7 +21,7 @@ function readFormData(){
 }
 
 function insertNewRecord(data){
-    var table = document.getElementById('employeeList').getElementsByTagName('tbody')[0]
+    var table = document.getElementById('taskList').getElementsByTagName('tbody')[0]
     var newRow = table.insertRow()
     cell1 = newRow.insertCell(0)
     cell1.innerHTML = data.task
@@ -55,7 +55,7 @@ function updateRecord(formData){
 function onDelete(td) {
     if (confirm('Ayou you sure')){
         row = td.parentElement.parentElement
-        document.getElementById('employeeList').deleteRow(row.rowIndex)
+        document.getElementById('taskList').deleteRow(row.rowIndex)
         resetForm()
     }
 }
@@ -64,10 +64,10 @@ function validate(){
     isValid = true;
     if (document.getElementById("task").value === ""){
         isValid = false
-        document.getElementById("fullNameValidationError").classList.remove("hide")
+        document.getElementById("taskValidationError").classList.remove("hide")
     }else{
-        if(!document.getElementById("fullNameValidationError").classList.contains("hide")){
-            document.getElementById("fullNameValidationError").classList.add("hide")
+        if(!document.getElementById("taskValidationError").classList.contains("hide")){
+            document.getElementById("taskValidationError").classList.add("hide")
         }
     }
     return isValid
